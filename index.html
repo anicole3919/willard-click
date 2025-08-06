@@ -57,10 +57,13 @@
       document.getElementById('output').textContent = "WILLARD";
       document.getElementById('counter').textContent = `Willard Count: ${count}`;
 
-      const utterance = new SpeechSynthesisUtterance("Willard");
-      speechSynthesis.speak(utterance);
+     speechSynthesis.cancel(); // Stop anything already being spoken
+const utterance = new SpeechSynthesisUtterance("Willard");
+speechSynthesis.speak(utterance);
+
     }
   </script>
 
 </body>
 </html>
+
