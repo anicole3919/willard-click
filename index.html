@@ -1,74 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Willard Clicker</title>
-  <style>
-    body {
-      background-color: #111;
-      color: limegreen;
-      font-family: 'Courier New', Courier, monospace;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      user-select: none;
-      cursor: pointer;
-    }
-
-    h1 {
-      font-size: 4rem;
-      animation: blink 1s infinite;
-    }
-
-    #counter {
-      font-size: 2rem;
-      margin-top: 10px;
-    }
-
-    img {
-      margin-top: 20px;
-      width: 300px;
-      max-width: 80%;
-      border: 4px solid limegreen;
-      border-radius: 20px;
-      box-shadow: 0 0 20px limegreen;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-  </style>
-</head>
-<body onclick="sayWillard()">
-
-  <h1 id="output">Click Anywhere</h1>
-  <div id="counter">Willard Count: 0</div>
-  <img id="willardImg" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Willard_movie_poster.jpg" alt="Willard" />
-
-  <script>
-    let count = 0;
-
-    function sayWillard() {
-      count++;
-      document.getElementById('output').textContent = "WILLARD";
-      document.getElementById('counter').textContent = `Willard Count: ${count}`;
-
-     speechSynthesis.cancel(); // Stop anything already being spoken
-const utterance = new SpeechSynthesisUtterance("Willard");
-speechSynthesis.speak(utterance);
-
-    }
-  </script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
   <meta charset="UTF-8" />
   <title>Willard Clicker</title>
 
@@ -77,9 +9,9 @@ speechSynthesis.speak(utterance);
 
   <style>
     body {
-      background-color: #0a0a23;
-      color: #00bfff;
-      font-family: 'Courier New', Courier, monospace;
+      background-color: #001f4d; /* dark blue */
+      color: #3399ff; /* bright blue text */
+      font-family: Geneva, sans-serif;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -89,39 +21,32 @@ speechSynthesis.speak(utterance);
       user-select: none;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
-      animation: pulse 5s infinite;
     }
 
     h1 {
       font-size: 4rem;
-      animation: blink 1s infinite;
+      /* Removed blink animation to stop flashing */
+      margin: 0;
+      user-select: none;
     }
 
     #counter {
       font-size: 2rem;
       margin-top: 10px;
+      user-select: none;
     }
 
     img {
       margin-top: 20px;
       width: 300px;
       max-width: 80%;
-      border: 4px solid #00bfff;
+      border: 4px solid #3399ff;
       border-radius: 20px;
-      box-shadow: 0 0 20px #00bfff;
+      box-shadow: 0 0 20px #3399ff;
       transition: all 0.3s ease-in-out;
       cursor: pointer;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    @keyframes pulse {
-      0% { background-color: #0a0a23; }
-      50% { background-color: #141446; }
-      100% { background-color: #0a0a23; }
+      user-select: none;
+      -webkit-user-drag: none;
     }
   </style>
 </head>
@@ -130,12 +55,13 @@ speechSynthesis.speak(utterance);
   <h1 id="output">Click the Willard</h1>
   <div id="counter">Willard Count: 0</div>
 
-  <!-- Clickable Willard image with Google Drive image as default -->
+  <!-- Willard image -->
   <img 
     id="willardImg" 
     src="https://drive.google.com/uc?export=view&id=1_C4_oAAs94DS_o8bnRC92Dgc85eiHxqf" 
     alt="Willard" 
     onclick="sayWillard()" 
+    draggable="false"
   />
 
   <!-- Willard Sound -->
@@ -154,27 +80,7 @@ speechSynthesis.speak(utterance);
 
     function sayWillard() {
       count++;
-      document.getElementById('output').textContent = "WILLARD";
-      document.getElementById('counter').textContent = `Willard Count: ${count}`;
-
-      // Restart voice
-      speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance("Willard");
-      speechSynthesis.speak(utterance);
-
-      // Restart sound
+      const output = document.getElementById('output');
+      const counter = document.getElementById('counter');
       const audio = document.getElementById("willardSound");
-      audio.currentTime = 0;
-      audio.play();
-
-      // Change image
-      const img = document.getElementById("willardImg");
-      const newIndex = Math.floor(Math.random() * imageUrls.length);
-      img.src = imageUrls[newIndex];
-    }
-  </script>
-
-</body>
-</html>
-
-
+      const img = document.getEl
